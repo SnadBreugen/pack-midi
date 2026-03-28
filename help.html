@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pack Midi — Help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #0f0f1a;
+      --neon: #00f5c4;
+      --orange: #ff7b00;
+      --yellow: #ffe600;
+      --text: #e0e0e0;
+      --muted: #8892aa;
+      --border: rgba(0,245,196,0.15);
+      --mono: 'Space Mono', monospace;
+      --body: 'DM Mono', monospace;
+    }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+    .topbar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-wave svg { width: 36px; height: 36px; }
+    .logo-text { font-family: var(--mono); color: var(--neon); font-size: 15px; letter-spacing: 3px; }
+    .logo-sub { display: block; font-family: var(--mono); color: var(--muted); font-size: 9px; letter-spacing: 3px; margin-top: 2px; }
+    .back-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--neon);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    .back-btn:hover { background: rgba(0,245,196,0.08); }
+    .content { max-width: 680px; margin: 0 auto; padding: 48px 24px; }
+    .page-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: var(--mono);
+      font-size: 28px;
+      color: var(--text);
+      letter-spacing: 2px;
+      margin-bottom: 48px;
+      font-weight: 700;
+    }
+    .section { margin-bottom: 48px; }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--neon);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 12px; }
+    .steps { display: flex; flex-direction: column; gap: 12px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .step-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--orange);
+      min-width: 24px;
+      margin-top: 1px;
+    }
+    .step-text { font-size: 14px; line-height: 1.7; color: var(--text); }
+    .step-text strong { color: var(--neon); font-weight: 400; }
+    .warning {
+      background: rgba(255,123,0,0.08);
+      border: 1px solid rgba(255,123,0,0.3);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 16px;
+    }
+    .warning-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .warning p { color: var(--text); margin: 0; font-size: 14px; }
+    .note {
+      background: rgba(0,245,196,0.05);
+      border: 1px solid rgba(0,245,196,0.2);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 16px;
+    }
+    .note-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--neon);
+      margin-bottom: 6px;
+    }
+    .note p { color: var(--text); margin: 0; font-size: 14px; }
+    .drum-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+    .drum-table th {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .drum-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+    .drum-table td:first-child { color: var(--orange); font-family: var(--mono); font-size: 12px; }
+    .drum-table td:last-child { color: var(--muted); font-size: 12px; }
+    .divider { height: 1px; background: var(--border); margin: 48px 0; }
+    .footer {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-top: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="logo" href="./index.html">
+      <svg width="36" height="36" viewBox="0 0 34 34" fill="none">
+        <circle cx="17" cy="17" r="15.5" stroke="#00f5c4" stroke-width="1" opacity=".35"/>
+        <line x1="2" y1="17" x2="7" y2="17" stroke="#00f5c4" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="17" x2="32" y2="17" stroke="#00f5c4" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7 17 Q8.5 10 10.5 17 Q12.5 24 14.5 17 Q16.5 10 18.5 17 Q20.5 24 22.5 17 Q24 10 27 17"
+          stroke="#00f5c4" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <span class="logo-text">PACK MIDI</span>
+        <span class="logo-sub">BY SNAD INDUSTRIES</span>
+      </div>
+    </a>
+    <a class="back-btn" href="./index.html">← BACK TO APP</a>
+  </div>
+
+  <div class="content">
+    <div class="page-title">DOCUMENTATION</div>
+    <h1>HOW TO USE</h1>
+
+    <div class="section">
+      <div class="section-num">01</div>
+      <h2>GETTING STARTED</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">Open <strong>Pack Midi</strong> and click <strong>Login with Audiotool</strong> — log in with your Audiotool account.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">Open your project on <strong>beta.audiotool.com</strong> and copy the URL from the browser address bar.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">Paste the URL into the <strong>Project URL</strong> field and click <strong>Load</strong>.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-text">Your tracks appear in the list. Click <strong>↓ .mid</strong> to download a single track, or <strong>Export all</strong> to download all tracks at once.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-num">02</div>
+      <h2>TRACK NAMES</h2>
+      <p>Pack Midi reads the name of the instrument (device) connected to each note track. The exported file will be named after that instrument.</p>
+      <div class="warning">
+        <div class="warning-label">IMPORTANT</div>
+        <p>Name your instruments in Audiotool before exporting — the device name becomes the track name and the file name. Double-click the device name in the studio to rename it.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-num">03</div>
+      <h2>MACHINISTE DRUM EXPORT</h2>
+      <p>Pack Midi exports the first 5 channels of the Machiniste drum sampler. Each channel is mapped to a standard GM drum note:</p>
+      <table class="drum-table">
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Drum Sound</th>
+            <th>GM Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CH 1</td><td>Kick</td><td>36 — Bass Drum</td></tr>
+          <tr><td>CH 2</td><td>Snare</td><td>38 — Acoustic Snare</td></tr>
+          <tr><td>CH 3</td><td>HiHat Closed</td><td>42 — Closed Hi-Hat</td></tr>
+          <tr><td>CH 4</td><td>HiHat Open</td><td>46 — Open Hi-Hat</td></tr>
+          <tr><td>CH 5</td><td>Crash</td><td>49 — Crash Cymbal</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <div class="note-label">NOTE</div>
+        <p>If your Machiniste uses a different channel order (e.g. Snare on CH 1), you'll need to reassign the MIDI notes in your DAW after import.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-num">04</div>
+      <h2>BPM</h2>
+      <p>Set the BPM in Pack Midi to match your Audiotool project tempo before exporting. The BPM is written into the MIDI file so your DAW syncs correctly on import.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-num">05</div>
+      <h2>SUPPORTED DEVICES</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">✓</div><div class="step-text"><strong>Note tracks</strong> — Heisenberg, Pulverisateur, Gakki, and all other synths with note tracks</div></div>
+        <div class="step"><div class="step-num">✓</div><div class="step-text"><strong>Machiniste</strong> — first 5 channels exported as GM drums (MIDI channel 10)</div></div>
+        <div class="step"><div class="step-num">✗</div><div class="step-text" style="color:var(--muted)">Beatbox 8 / Beatbox 9 — not yet supported</div></div>
+        <div class="step"><div class="step-num">✗</div><div class="step-text" style="color:var(--muted)">Bassline — not yet supported</div></div>
+      </div>
+    </div>
+
+    <div class="footer">PACK MIDI · BY SNAD INDUSTRIES · v1.5</div>
+  </div>
+</body>
+</html>
